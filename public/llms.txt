@@ -1,0 +1,32 @@
+# Infinite Automation Technology
+
+> Infinite Automation Technology designs, installs, and supports premium home automation systems — Z-Wave security devices, Zigbee smart lighting, and motorized curtains/blinds — unified into a single mobile app. Serving the greater metro area and suburbs.
+
+## Services
+
+- Z-Wave Automation: Smart locks, door/window sensors, water leak and smoke detection, encrypted (S2) mesh network supporting up to 232 devices.
+- Zigbee Lighting & Sensors: Smart lighting and switches, motion/presence sensors, scenes and schedules, compatible with Amazon Alexa, Google Assistant, and Apple HomeKit.
+- Motorized Curtains & Blinds: Silent battery or hardwired curtain/blind motors, solar and light-sensing automation, retrofits onto most existing tracks, app/remote/voice control.
+
+## Process
+
+1. Free consultation — an in-person or phone walkthrough of the home and automation goals.
+2. Custom design — a device, hub, and automation plan tailored to the home's rooms and budget.
+3. Expert installation — certified technicians install, wire, and configure everything.
+4. Ongoing support — a working smart home handed over with continued support access.
+
+## Frequently asked questions
+
+- Z-Wave vs. Zigbee: Z-Wave is generally used for security-critical devices (locks, sensors) due to longer range and a dedicated frequency; Zigbee is used for lighting/switches thanks to its larger device ecosystem. Most installations mix both under one app.
+- Curtain motor retrofits: Most motors fit onto existing curtain tracks and rods with minimal modification.
+- Hub requirement: Z-Wave and Zigbee devices require a local hub (included in installation); local automations keep working even if internet access drops.
+- Data security: Z-Wave uses S2 encryption by default; Zigbee traffic is encrypted at the network level.
+- Voice assistant support: Every installation supports Amazon Alexa, Google Assistant, and Apple HomeKit.
+- Offline behavior: Local schedules, sensor-triggered scenes, and physical switches continue working without internet; only remote/away access and voice assistants require it.
+
+## Contact
+
+- Phone: +91 836 019 1536
+- Email: info@InfiniteIot.in
+- Hours: Mon–Sat, 9:00 AM–6:00 PM
+- Website: https://www.infiniteiot.in

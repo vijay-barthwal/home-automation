@@ -1,9 +1,26 @@
+// Update NEXT_PUBLIC_SITE_URL in .env.local once the production domain is live.
+const DEFAULT_SITE_URL = "https://www.infiniteiot.in";
+
 export const siteConfig = {
   name: "Infinite Automation",
   fullName: "Infinite Automation Technology",
   tagline: "Smarter living, seamlessly connected.",
   description:
     "Infinite Automation Technology designs and installs premium Z-Wave, Zigbee, and motorized curtain systems — unified into one simple, secure smart home experience.",
+  siteUrl: (process.env.NEXT_PUBLIC_SITE_URL || DEFAULT_SITE_URL).replace(/\/$/, ""),
+  keywords: [
+    "home automation",
+    "Z-Wave installation",
+    "Zigbee smart lighting",
+    "motorized curtains",
+    "smart curtain motors",
+    "smart home installer",
+    "home automation company India",
+    "smart switches and scene panels",
+    "smart home security",
+    "Alexa Google Home HomeKit integration",
+  ],
+  locale: "en_IN",
   phone: "+91 836 019 1536",
   phoneHref: "tel:+918360191536",
   email: "info@InfiniteIot.in",
