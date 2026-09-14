@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #f7f8fb;
+  --surface: #ffffff;
+  --surface-2: #eef1f7;
+  --foreground: #0b0f1a;
+  --muted: #5b6577;
+  --border: rgba(15, 23, 42, 0.09);
+  --border-strong: rgba(15, 23, 42, 0.16);
+  --primary: #0891b2;
+  --primary-2: #0e7490;
+  --accent: #6366f1;
+  --accent-2: #7c3aed;
+  --success: #059669;
+  --brand: #0e7490;
+  --grid-line: rgba(15, 23, 42, 0.05);
+  color-scheme: light;
+}
+
+.dark {
+  --background: #060810;
+  --surface: #0c1020;
+  --surface-2: #12172a;
+  --foreground: #f3f6fb;
+  --muted: #93a0b8;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --primary: #22d3ee;
+  --primary-2: #06b6d4;
+  --accent: #818cf8;
+  --accent-2: #a78bfa;
+  --success: #34d399;
+  --brand: #67e8f9;
+  --grid-line: rgba(255, 255, 255, 0.06);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-primary: var(--primary);
+  --color-primary-2: var(--primary-2);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-success: var(--success);
+  --color-brand: var(--brand);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+::selection {
+  background: var(--primary);
+  color: #04121a;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-2);
+  border-radius: 999px;
+  border: 2px solid var(--background);
+}
+
+@layer utilities {
+  .container-px {
+    @apply px-5 sm:px-8 lg:px-12;
+  }
+
+  .section-py {
+    @apply py-20 sm:py-28;
+  }
+
+  .glass {
+    background: color-mix(in oklab, var(--surface) 70%, transparent);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .glass-strong {
+    background: color-mix(in oklab, var(--surface-2) 85%, transparent);
+    border: 1px solid var(--border-strong);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, #22d3ee, #0891b2, #6366f1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .dark .gradient-text {
+    background: linear-gradient(90deg, #67e8f9, #22d3ee, #818cf8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold text-[#04121a] transition-transform duration-200 active:scale-95;
+    background: linear-gradient(135deg, #67e8f9, #22d3ee 45%, #818cf8);
+    box-shadow: 0 8px 30px -8px rgba(34, 211, 238, 0.45);
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3.5 text-sm font-semibold text-foreground transition-colors duration-200 active:scale-95;
+    border-color: var(--border-strong);
+    background: color-mix(in oklab, var(--surface) 40%, transparent);
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-medium tracking-wide;
+    color: var(--brand);
+    background: color-mix(in oklab, var(--primary) 12%, transparent);
+    border: 1px solid color-mix(in oklab, var(--primary) 30%, transparent);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in oklab, var(--primary) 40%, var(--border-strong));
+  }
+
+  .noise-grid {
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border px-4 py-3 text-sm outline-none transition-colors;
+    background: color-mix(in oklab, var(--foreground) 4%, transparent);
+    border-color: var(--border);
+  }
+  .input-field:focus {
+    border-color: color-mix(in oklab, var(--primary) 55%, var(--border));
+  }
+}
