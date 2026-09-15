@@ -106,14 +106,12 @@ export default function AppPreview() {
 
   return (
     <div className="relative mx-auto w-full max-w-sm py-6">
-      {/* Floating notification — lights */}
+      {/* Floating notifications: fade in once and hold still — no perpetual
+          JS animation loop running in the background for the life of the page. */}
       <motion.div
         initial={{ opacity: 0, y: -8, x: -8 }}
-        animate={{ opacity: 1, y: [0, -7, 0] }}
-        transition={{
-          opacity: { duration: 0.6, delay: 0.9 },
-          y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-        }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.9 }}
         className="absolute -left-2 -top-2 z-20 hidden items-center gap-2.5 rounded-2xl glass-strong px-3.5 py-2.5 shadow-lg sm:-left-7 sm:-top-4 sm:flex"
       >
         <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-500/15 text-amber-500">
@@ -125,14 +123,10 @@ export default function AppPreview() {
         </div>
       </motion.div>
 
-      {/* Floating notification — door locked */}
       <motion.div
         initial={{ opacity: 0, y: 8, x: 8 }}
-        animate={{ opacity: 1, y: [0, 7, 0] }}
-        transition={{
-          opacity: { duration: 0.6, delay: 1.2 },
-          y: { duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
-        }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 1.2 }}
         className="absolute -right-2 -bottom-2 z-20 hidden items-center gap-2.5 rounded-2xl glass-strong px-3.5 py-2.5 shadow-lg sm:-right-6 sm:-bottom-4 sm:flex"
       >
         <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-500">
@@ -157,11 +151,7 @@ export default function AppPreview() {
             </div>
           </div>
           <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] font-medium text-emerald-500">
-            <motion.span
-              className="h-1.5 w-1.5 rounded-full bg-emerald-500"
-              animate={{ opacity: [1, 0.3, 1] }}
-              transition={{ duration: 1.6, repeat: Infinity }}
-            />
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
             Online
           </span>
         </motion.div>

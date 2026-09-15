@@ -23,6 +23,7 @@ export const siteConfig = {
   locale: "en_IN",
   phone: "+91 836 019 1536",
   phoneHref: "tel:+918360191536",
+  whatsapp: "https://wa.me/918360191536",
   email: "info@InfiniteIot.in",
   address: "Serving the Greater Metro Area & Suburbs",
   hours: "Mon – Sat, 9:00 AM – 6:00 PM",

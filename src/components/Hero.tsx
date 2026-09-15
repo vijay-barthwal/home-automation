@@ -21,16 +21,13 @@ export default function Hero() {
     <section id="top" className="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24">
       {/* Background */}
       <div className="pointer-events-none absolute inset-0 -z-10 noise-grid opacity-40" />
-      <motion.div
-        className="pointer-events-none absolute -top-40 -left-32 -z-10 h-[420px] w-[420px] rounded-full bg-cyan-500/25 blur-[110px]"
-        animate={{ x: [0, 30, 0], y: [0, 20, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="pointer-events-none absolute top-20 right-[-160px] -z-10 h-[420px] w-[420px] rounded-full bg-indigo-500/20 blur-[110px]"
-        animate={{ x: [0, -25, 0], y: [0, 25, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-      />
+      {/* Static on purpose: a heavily-blurred 420px circle is one of the most
+          expensive things a mobile GPU can composite. Animating its position
+          forever (even off-screen) was the reason this section could visibly
+          stutter when scrolled back into view. A static glow looks the same
+          at a glance and costs one paint instead of an endless loop. */}
+      <div className="pointer-events-none absolute -top-40 -left-32 -z-10 h-[420px] w-[420px] rounded-full bg-cyan-500/25 blur-[110px]" />
+      <div className="pointer-events-none absolute top-20 right-[-160px] -z-10 h-[420px] w-[420px] rounded-full bg-indigo-500/20 blur-[110px]" />
 
       <div className="container-px mx-auto max-w-7xl">
         <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-8">

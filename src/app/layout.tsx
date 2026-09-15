@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { siteConfig } from "@/lib/site-config";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/structured-data";
 import ThemeProvider from "@/components/ThemeProvider";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -103,6 +104,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         ))}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
+          <WhatsAppButton />
         </ThemeProvider>
       </body>
     </html>
