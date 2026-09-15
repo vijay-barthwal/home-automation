@@ -1,6 +1,11 @@
 // Update NEXT_PUBLIC_SITE_URL in .env.local once the production domain is live.
 const DEFAULT_SITE_URL = "https://www.infiniteiot.in";
 
+// See the "Images & caching" note in README.md — bump the trailing ?v=N
+// ONLY on this file's path when you replace logo-mark.webp with a new file
+// of the same name, so browsers fetch the new one instead of the long cache.
+export const LOGO_MARK_SRC = "/logo-mark.webp?v=1";
+
 export const siteConfig = {
   name: "Infinite Automation",
   fullName: "Infinite Automation Technology",

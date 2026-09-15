@@ -5,55 +5,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, X, ZoomIn } from "lucide-react";
 import { fadeUp, staggerContainer, viewportOnce, EASE } from "@/lib/motion";
+import { gallery } from "@/lib/gallery";
 import SectionHeading from "./SectionHeading";
-
-const gallery = [
-  {
-    src: "/product-gallery/zwave-scene-dial-outlet-panel.webp",
-    title: "Z-Wave Scene Dial + Smart Outlet",
-    description: "Multi-scene dimmer dial paired with a smart universal outlet.",
-  },
-  {
-    src: "/product-gallery/zigbee-touch-switch-panel.webp",
-    title: "Zigbee Touch Switch Panel",
-    description: "Brushed-steel touch panel for lights, power, and fan control.",
-  },
-  {
-    src: "/product-gallery/smart-scene-dial-switch-panel.webp",
-    title: "Scene Dial + Touch Switches",
-    description: "A combined dimmer dial and multi-function touch panel.",
-  },
-  {
-    src: "/product-gallery/scene-mode-switch-panel.webp",
-    title: "Custom Scene Labels",
-    description: "Program named scenes like Visitor, Eating, and Sleep mode.",
-  },
-  {
-    src: "/product-gallery/smart-control-panel-alexa.webp",
-    title: "In-Wall Control Hub (Alexa Built-in)",
-    description: "A full room dashboard with Alexa built directly into the panel.",
-  },
-  {
-    src: "/product-gallery/smart-home-dashboard-panel.webp",
-    title: "Smart Home Dashboard",
-    description: "Control curtains, lighting, and climate from one wall-mounted screen.",
-  },
-  {
-    src: "/product-gallery/switch-panel-finish-collection.webp",
-    title: "Available Finishes",
-    description: "Every panel ships in silver, gold, graphite, and matte black.",
-  },
-  {
-    src: "/product-gallery/touch-switch-panel-finishes.webp",
-    title: "Touch Switch Collection",
-    description: "The same panel in four premium finishes to match any interior.",
-  },
-  {
-    src: "/product-gallery/dimmer-scene-dial-panel.webp",
-    title: "Dimmer & CCT Scene Dial",
-    description: "Fine-tune brightness and color temperature with a single dial.",
-  },
-];
 
 export default function ProductGallery() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);

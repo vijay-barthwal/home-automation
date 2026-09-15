@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { LOGO_MARK_SRC } from "@/lib/site-config";
 
 export default function Logo({ size = 36 }: { size?: number }) {
   return (
@@ -7,7 +8,7 @@ export default function Logo({ size = 36 }: { size?: number }) {
       style={{ width: size, height: size }}
     >
       <Image
-        src="/logo-mark.webp"
+        src={LOGO_MARK_SRC}
         alt=""
         width={size}
         height={size}

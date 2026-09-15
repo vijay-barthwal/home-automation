@@ -30,6 +30,28 @@ Each section of the page is its own component in
 `HowItWorks`, `Showcase`, `Testimonials`, `FAQ`, `Contact`, `Footer`),
 assembled in [src/app/page.tsx](src/app/page.tsx).
 
+### Images & caching
+
+[next.config.ts](next.config.ts) sets `images.minimumCacheTTL` to 1 year —
+optimized images are cached as aggressively as possible by browsers and any
+CDN in front of the site, which keeps bandwidth/optimization costs down on
+repeat traffic. Freshness after an update is handled separately, per image,
+via a `?v=N` query tag on each image path (in `site-config.ts` and
+`gallery.ts`) — **not** by waiting for the cache to expire. This means only
+the image you actually changed gets re-fetched/re-optimized after a deploy,
+not the whole site.
+
+When you update an image, there are two cases:
+
+- **New file, new filename** — just point the relevant entry at the new
+  path. Nothing else to do; a new URL is never cached, so it's fetched fresh
+  automatically.
+- **Replacing a file at the same filename** — bump that one entry's `?v=N`
+  to `?v=N+1` (e.g. `/product-gallery/zwave-scene-dial-outlet-panel.webp?v=1`
+  → `...?v=2`) before redeploying. That changes the URL for just that
+  image, so it's fetched fresh; every other image keeps its long cache
+  untouched.
+
 ## Contact form (SMTP, no backend/database)
 
 The form posts to a Next.js API route ([src/app/api/contact/route.ts](src/app/api/contact/route.ts))
