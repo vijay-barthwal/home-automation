@@ -60,27 +60,35 @@ using credentials kept only in server-side environment variables — never
 sent to the browser. Works with any SMTP provider (GoDaddy/Microsoft 365,
 Gmail, etc.) by pointing `SMTP_HOST`/`SMTP_PORT` at it.
 
-### Setup (GoDaddy / Microsoft 365)
+### Setup (GoDaddy / Titan-powered email)
 
-1. Enable **Multi-Factor Authentication** on the mailbox, then generate an
-   app password at https://mysignins.microsoft.com/security-info → **Add
-   sign-in method** → **App password**. Copy it immediately — it's only shown once.
-2. Copy the example env file and fill it in:
+This domain's mail is provisioned by GoDaddy on the Titan-powered email
+platform, routed through GoDaddy's own SMTP relay
+(`smtpout.secureserver.net`) rather than `smtp.titan.email` directly.
+
+1. Copy the example env file and fill it in with the mailbox's regular
+   login password — no app password/MFA step needed on this platform:
 
    ```bash
    cp .env.local.example .env.local
    ```
 
    ```env
-   SMTP_HOST=smtp.office365.com
-   SMTP_PORT=587
+   SMTP_HOST=smtpout.secureserver.net
+   SMTP_PORT=465
    SMTP_USER=youraddress@yourdomain.com
    SMTP_PASSWORD=xxxxxxxxxxxxxxxx
    CONTACT_TO_EMAIL=youraddress@yourdomain.com
    ```
 
-3. Restart the dev server. `.env.local` is already git-ignored, so the
+2. Restart the dev server. `.env.local` is already git-ignored, so the
    password never gets committed.
+
+**If this domain's mail is ever migrated to Microsoft 365 instead:** enable
+**Multi-Factor Authentication** on the mailbox, then generate an app
+password at https://mysignins.microsoft.com/security-info → **Add sign-in
+method** → **App password**, and set `SMTP_HOST=smtp.office365.com`,
+`SMTP_PORT=587`.
 
 **Using Gmail instead:** set `SMTP_HOST=smtp.gmail.com`, `SMTP_PORT=587`,
 and use an app password from https://myaccount.google.com/apppasswords
