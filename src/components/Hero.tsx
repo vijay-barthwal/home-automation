@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, Sparkles, Wifi } from "lucide-react";
 import { fadeUp, staggerContainer, EASE } from "@/lib/motion";
-import DeviceNetwork from "./DeviceNetwork";
+import AppPreview from "./AppPreview";
 
 const stats = [
   { value: "500+", label: "Smart homes delivered" },
@@ -91,9 +91,10 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
-            className="rounded-[2.5rem] border border-border-strong bg-surface-2 p-4 shadow-2xl sm:p-8"
+            className="relative mx-auto w-full max-w-md"
           >
-            <DeviceNetwork />
+            <div className="pointer-events-none absolute -inset-8 -z-10 rounded-[3rem] bg-gradient-to-br from-cyan-400/25 via-indigo-400/10 to-transparent blur-2xl" />
+            <AppPreview />
           </motion.div>
         </div>
 

@@ -64,6 +64,17 @@ html {
   scroll-behavior: smooth;
 }
 
+/* overflow-anchor doesn't inherit, so Chromium's scroll anchoring can still
+   pick any descendant as its anchor node. It can choose the wrong one while
+   an animated SVG value re-renders inside an overflow-hidden section, then
+   yank the page sideways/down to "correct" for a shift that never really
+   happened. This site has no scroll-jank-prone content (late-loading images
+   above the fold, etc.) that anchoring is meant to help with, so it's
+   disabled everywhere. */
+* {
+  overflow-anchor: none;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

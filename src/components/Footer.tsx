@@ -31,7 +31,7 @@ const socialLinks = [
     label: "LinkedIn",
     path: "M6.94 8.5H3.56V21h3.38V8.5zM5.25 3a1.97 1.97 0 100 3.94A1.97 1.97 0 005.25 3zM20.45 21h-3.37v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.31V21H9.22V8.5h3.24v1.71h.05c.45-.85 1.56-1.75 3.21-1.75 3.43 0 4.06 2.26 4.06 5.2V21z",
   },
-];
+].filter((s) => s.href);
 
 export default function Footer() {
   return (
@@ -46,20 +46,22 @@ export default function Footer() {
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
               {siteConfig.description}
             </p>
-            <div className="mt-5 flex gap-3">
-              {socialLinks.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-cyan-400/40 hover:text-brand"
-                >
-                  <SocialIcon path={s.path} />
-                </a>
-              ))}
-            </div>
+            {socialLinks.length > 0 && (
+              <div className="mt-5 flex gap-3">
+                {socialLinks.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-cyan-400/40 hover:text-brand"
+                  >
+                    <SocialIcon path={s.path} />
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
 
           <div>

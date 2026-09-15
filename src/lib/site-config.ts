@@ -26,11 +26,13 @@ export const siteConfig = {
   email: "info@InfiniteIot.in",
   address: "Serving the Greater Metro Area & Suburbs",
   hours: "Mon – Sat, 9:00 AM – 6:00 PM",
+  // Set these in .env.local (see .env.local.example). Left unset, the
+  // corresponding footer icon is simply not rendered — see Footer.tsx.
   social: {
-    instagram: "https://instagram.com",
-    facebook: "https://facebook.com",
-    youtube: "https://youtube.com",
-    linkedin: "https://linkedin.com",
+    instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "",
+    facebook: process.env.NEXT_PUBLIC_FACEBOOK_URL || "",
+    youtube: process.env.NEXT_PUBLIC_YOUTUBE_URL || "",
+    linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL || "",
   },
   nav: [
     { label: "Products", href: "#products" },

@@ -47,22 +47,26 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const GMAIL_USER = process.env.GMAIL_USER;
-  const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD;
-  const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL || GMAIL_USER;
+  const SMTP_HOST = process.env.SMTP_HOST;
+  const SMTP_PORT = Number(process.env.SMTP_PORT || 587);
+  const SMTP_USER = process.env.SMTP_USER;
+  const SMTP_PASSWORD = process.env.SMTP_PASSWORD;
+  const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL || SMTP_USER;
 
-  if (!GMAIL_USER || !GMAIL_APP_PASSWORD) {
-    console.error("Contact form: GMAIL_USER / GMAIL_APP_PASSWORD env vars are not set.");
+  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASSWORD) {
+    console.error("Contact form: SMTP_HOST / SMTP_USER / SMTP_PASSWORD env vars are not set.");
     return NextResponse.json(
-      { success: false, error: "The contact form is not configured yet. Please call or email us directly." },
+      { success: false, error: "The contact form is not configured yet. Please call or WhatsApp us directly." },
       { status: 500 }
     );
   }
 
   try {
     const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: { user: GMAIL_USER, pass: GMAIL_APP_PASSWORD },
+      host: SMTP_HOST,
+      port: SMTP_PORT,
+      secure: SMTP_PORT === 465, // true for port 465 (implicit TLS), false for 587 (STARTTLS)
+      auth: { user: SMTP_USER, pass: SMTP_PASSWORD },
     });
 
     const safe = {
@@ -74,7 +78,7 @@ export async function POST(req: NextRequest) {
     };
 
     await transporter.sendMail({
-      from: `"Website Contact Form" <${GMAIL_USER}>`,
+      from: `"Website Contact Form" <${SMTP_USER}>`,
       to: CONTACT_TO_EMAIL,
       replyTo: email,
       subject: `New inquiry from ${name}${interest ? ` — ${interest}` : ""}`,
